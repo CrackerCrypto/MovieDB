@@ -6,6 +6,7 @@
     $m_name = $_POST['m_name'];
 
     $res = mysqli_query($conn, "SELECT * FROM `production_movie` WHERE `m_title` = '$m_name'");
+    // Check whether the movie is already on the database or not
     if(mysqli_num_rows($res)>=1){
         echo $m_name . " is already present on the table";
         die();
@@ -25,6 +26,7 @@
             $check = "SELECT * FROM `production_movie` 
                         WHERE `prod_name`='$prod_house' AND `m_title`='$m_name'";
             $result = mysqli_query($conn, $check);
+
             // $num = mysqli_num_rows($result)
             // echo $num;
             if(mysqli_num_rows($result)>=1){
