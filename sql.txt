@@ -1,0 +1,4 @@
+INSERT INTO production_movie(`pid`, `mid`, `prod_name`, `m_title`)
+            VALUES('$id', '$id1', '$row['prod_name']', '$row1['m_title']')
+
+SELECT `genre`.`m_title`, `genre`.`genre` FROM `genre` INNER JOIN `production_movie` ON `genre`.`mid` = `production_movie`.`mid`;
