@@ -1,4 +1,5 @@
 <?php include_once "connection.php"; ?>
+
 <?php
     // session_start();
     
@@ -14,17 +15,19 @@
     else{
         $r = mysqli_query($conn, "SELECT * FROM `productioncompany` WHERE `prod_name`= '" .$prod_house."'");
         $row = mysqli_fetch_array($r);
+        $num = mysqli_num_rows($r);
         
         $r1 = mysqli_query($conn, "SELECT * FROM `movie` WHERE `m_title`= '" .$m_name."'");
         $row1 = mysqli_fetch_array($r1);
+        $num1 = mysqli_num_rows($r1);
         
         //checking whether both are present in the database or not
-        if(($prod_house == $row['prod_name']) && ($m_name == $row1['m_title'])){
+        if(($num == 1) && ($num1 == 1)){
             $id = $row['prod_id'];
             $id1 = $row1['mid'];
+
             // authenticating whether the production house and movie are already present in the database or not
-            $check = "SELECT * FROM `production_movie` 
-                        WHERE `prod_name`='$prod_house' AND `m_title`='$m_name'";
+            $check = "SELECT * FROM `production_movie` WHERE `prod_name`='$prod_house' AND `m_title`='$m_name'";
             $result = mysqli_query($conn, $check);
 
             // $num = mysqli_num_rows($result)

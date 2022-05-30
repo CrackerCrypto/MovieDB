@@ -1,7 +1,7 @@
 <!-- This file is for inserting the movie into "MOVIE" table and "GENRE" table -->
 <?php include_once "connection.php";?>
 <?php
-    session_start();
+    // session_start();
 
     $title = $_POST['title'];
     $length = $_POST['length'];
@@ -18,7 +18,7 @@
     else{
         echo "data not inserted" .mysqli_error($conn);
     }
-
+    // get the id of recently added movie
     $sql1 = "SELECT * FROM `movie` WHERE `mid` = (SELECT MAX(`mid`) FROM `movie`)";
     $r = mysqli_query($conn, $sql1);
 
@@ -26,6 +26,7 @@
     $fk = $value['mid'];
     $m_name = $value['m_title'];
 
+    // Inserting the movie genre into the `genre` database
     if(isset($_POST['check_list'])){
         foreach($_POST['check_list'] as $genre){
             $sql2 = "INSERT INTO `genre`(`mid`, `m_title`, `genre`)
