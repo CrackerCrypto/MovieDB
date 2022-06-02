@@ -1,6 +1,4 @@
-<!-- This file is for inserting the movie into "MOVIE" table and "GENRE" table -->
-<?php include_once "connection.php";?>
-
+<?php include_once "connection.php"; ?>
 <?php
     $title = $_POST['title'];
     $length = $_POST['length'];
