@@ -6,19 +6,20 @@ function addInput(){
         var firstLabel = document.createElement("label");
         firstLabel.setAttribute("for","actor_name");
         firstLabel.innerHTML = "Actor name:";
-        // label for actor role
+
+        var firstInput = document.createElement("input");
+        firstInput.type = "text";
+        firstInput.name = "actor_name[]";
+        
+        // label for role
         var secondLabel = document.createElement("label");
         secondLabel.setAttribute("for","role");
         secondLabel.innerHTML = "Role: ";
     
-        var firstInput = document.createElement("input");
-        firstInput.type = "text";
-        firstInput.name = "actor_name[]";
-    
         var secondInput = document.createElement("input");
         secondInput.type = "text";
         secondInput.name = "role[]";
-    
+
         var text = document.getElementById("text");
         text.appendChild(firstLabel);
         text.appendChild(firstInput);
