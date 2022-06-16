@@ -1,7 +1,9 @@
 <?php include_once "connection.php"; ?>
-
+<style>
+    <?php include_once "style.css";?>
+</style>
 <?php
-    echo "<h1><u>Sort by Genre</u></h1>";
+    echo "<h1><u>Report For Sort by Genre</u></h1>";
 
     $name = $_POST['production_house'];
     $sql = "SELECT `genre`.`m_title`, `genre`.`genre` FROM `genre` 
@@ -11,15 +13,17 @@
     // $numrow = mysqli_num_rows($r);
 
     echo "<table border='1'>
-    <tr>
-        <th>Movie</th>
-        <th>Genre</th>
-    </tr>";
+    <thead>
+        <tr>
+            <th>Movie</th>
+            <th>Genre</th>
+        </tr>
+    </thead>";
 
     while($row = mysqli_fetch_assoc($r)){
         echo "<tr>";
             echo "<td>" .$row['m_title']."</td>";
-            echo "<td>" .$row['genre']."</td>";
+            echo "<td>" .strtoupper($row['genre'])."</td>";
         echo "</tr>";
     }
     echo "</table>";
